@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f6f8;
+  --foreground: #111827;
+  --card: #ffffff;
+  --surface: #f3f4f6;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --primary: #1d4ed8;
+  --primary-foreground: #ffffff;
+  --brand: #1d4ed8;
+  --brand-soft: #eef3ff;
+  --ok: #15803d;
+  --ok-soft: #ecfdf3;
+  --ng: #dc2626;
+  --ng-soft: #fef2f2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b0d12;
+    --foreground: #e6e8ec;
+    --card: #12151b;
+    --surface: #1a1e26;
+    --muted: #9aa1ad;
+    --line: #262b35;
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --brand: #8fb3ff;
+    --brand-soft: #16213b;
+    --ok: #4ade80;
+    --ok-soft: #0f2418;
+    --ng: #f87171;
+    --ng-soft: #2a1414;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-ng: var(--ng);
+  --color-ng-soft: var(--ng-soft);
+  --font-sans: var(--font-geist), var(--font-noto-sans-jp), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", Meiryo, sans-serif;
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.05), 0 1px 3px rgb(16 24 40 / 0.04);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}

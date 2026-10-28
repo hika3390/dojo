@@ -1,0 +1,58 @@
+[
+  {
+    "year": 2026,
+    "label": "令和8年度",
+    "page": "https://www.moj.go.jp/MINJI/minji05_00777.html",
+    "am": "https://www.moj.go.jp/content/001467964.pdf",
+    "pm": "https://www.moj.go.jp/content/001467965.pdf",
+    "answers": "https://www.moj.go.jp/content/001467955.pdf"
+  },
+  {
+    "year": 2025,
+    "label": "令和7年度",
+    "page": "https://www.moj.go.jp/MINJI/minji05_00715.html",
+    "am": "https://www.moj.go.jp/content/001444126.pdf",
+    "pm": "https://www.moj.go.jp/content/001444127.pdf",
+    "answers": "https://www.moj.go.jp/content/001444124.pdf"
+  },
+  {
+    "year": 2024,
+    "label": "令和6年度",
+    "page": "https://www.moj.go.jp/MINJI/minji05_00635.html",
+    "am": "https://www.moj.go.jp/content/001422259.pdf",
+    "pm": "https://www.moj.go.jp/content/001422260.pdf",
+    "answers": "https://www.moj.go.jp/content/001422263.pdf"
+  },
+  {
+    "year": 2023,
+    "label": "令和5年度",
+    "page": "https://www.moj.go.jp/MINJI/minji05_00541.html",
+    "am": "https://www.moj.go.jp/content/001400147.pdf",
+    "pm": "https://www.moj.go.jp/content/001400148.pdf",
+    "answers": "https://www.moj.go.jp/content/001400152.pdf"
+  },
+  {
+    "year": 2022,
+    "label": "令和4年度",
+    "page": "https://www.moj.go.jp/MINJI/minji05_00468.html",
+    "am": "https://www.moj.go.jp/content/001378353.pdf",
+    "pm": "https://www.moj.go.jp/content/001378354.pdf",
+    "answers": "https://www.moj.go.jp/content/001378149.pdf"
+  },
+  {
+    "year": 2021,
+    "label": "令和3年度",
+    "page": "https://www.moj.go.jp/MINJI/minji05_00404.html",
+    "am": "https://www.moj.go.jp/content/001353892.pdf",
+    "pm": "https://www.moj.go.jp/content/001353893.pdf",
+    "answers": "https://www.moj.go.jp/content/001353896.pdf"
+  },
+  {
+    "year": 2020,
+    "label": "令和2年度",
+    "page": "https://www.moj.go.jp/MINJI/minji05_00100.html",
+    "am": "https://www.moj.go.jp/content/001331728.pdf",
+    "pm": "https://www.moj.go.jp/content/001332088.pdf",
+    "answers": "https://www.moj.go.jp/content/001331725.pdf"
+  }
+]
