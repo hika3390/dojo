@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { SubjectIcon } from "./icons";
-import { IconBox } from "./ui";
+import { SparkleIcon, SubjectIcon } from "./icons";
+import { Card, IconBox } from "./ui";
 import { SESSION_LABEL, statementLabel, subjectName, yearLabel } from "@/presentation/shared/formatters";
 import type { QuestionView as Question, StatementView as Statement } from "@/usecases/dto/question-query.dto";
 
@@ -131,6 +131,27 @@ export function DialogueContext({ statement }: { statement: Statement }) {
         );
       })}
     </div>
+  );
+}
+
+export function StatementExplanation({ statement }: { statement: Statement }) {
+  return (
+    <Card className="space-y-2 px-5 py-4 sm:px-7">
+      <h2 className="flex items-center gap-2 text-sm font-semibold">
+        解説
+        {statement.explanation && (
+          <span className="inline-flex items-center gap-1 rounded border border-line px-1.5 py-0.5 text-[11px] font-normal text-muted">
+            <SparkleIcon size={12} className="text-brand" />
+            AI生成
+          </span>
+        )}
+      </h2>
+      {statement.explanation ? (
+        <p className="leading-relaxed">{statement.explanation}</p>
+      ) : (
+        <p className="text-sm text-muted">この肢の解説はまだありません</p>
+      )}
+    </Card>
   );
 }
 

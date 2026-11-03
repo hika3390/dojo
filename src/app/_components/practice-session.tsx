@@ -19,6 +19,7 @@ import {
   QuestionMeta,
   QuestionNote,
   QuestionNotes,
+  StatementExplanation,
   StatementText,
   TruthIcon,
   TruthMark,
@@ -254,7 +255,8 @@ function SessionRunner({
               <ArrowRightIcon size={16} />
             </Button>
           </div>
-          <details open={!ok} className="group rounded-xl border border-line bg-card shadow-card">
+          <StatementExplanation statement={item.statement} />
+          <details className="group rounded-xl border border-line bg-card shadow-card">
             <summary className="flex cursor-pointer select-none list-none items-center justify-between px-5 py-3.5 text-sm font-medium [&::-webkit-details-marker]:hidden">
               元の問題
               <ChevronIcon size={16} className="text-muted group-open:rotate-180" />
@@ -352,12 +354,15 @@ function SessionResult({
             <span className={`mt-0.5 shrink-0 ${ok ? "text-ok" : "text-ng"}`} aria-label={ok ? "正解" : "不正解"}>
               {ok ? <CheckCircleIcon size={20} /> : <CrossCircleIcon size={20} />}
             </span>
-            <span className="min-w-0 flex-1 space-y-0.5">
+            <span className="min-w-0 flex-1 space-y-1">
               <span className="block text-xs text-muted">
                 {shortYearLabel(item.question.year)} {SESSION_LABEL[item.question.session]} 第{item.question.number}問{" "}
                 {statementLabel(item.question, item.statement)} · {subjectName(item.question.subject)}
               </span>
               <span className="line-clamp-2 text-sm leading-relaxed">{item.statement.text}</span>
+              {item.statement.explanation && (
+                <span className="block rounded-lg bg-surface px-3 py-2 text-xs leading-relaxed text-muted">{item.statement.explanation}</span>
+              )}
             </span>
             <TruthMark truth={item.statement.truth} />
           </Link>

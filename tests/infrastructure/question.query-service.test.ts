@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { subjectAt } from "@/domain/constants/subjects";
+import explanations from "@/infrastructure/data/explanations";
 import { QuestionQueryService } from "@/infrastructure/queries/question.query-service";
 
 describe("QuestionQueryService（収録データ）", () => {
@@ -25,6 +26,23 @@ describe("QuestionQueryService（収録データ）", () => {
     const sum = (values: number[]) => values.reduce((a, b) => a + b, 0);
     expect(sum(Object.values(totals.bySubject))).toBe(totals.all);
     expect(sum(Object.values(totals.byYear))).toBe(totals.all);
+  });
+
+  it("解説データのIDはすべて実在の肢で、演習用の一覧の該当する肢に載る", async () => {
+    const catalog = await service.getPracticeCatalog();
+    const shown = new Map<string, string | undefined>(
+      catalog.questions.flatMap((q) => q.statements!.map((s, i) => [`${q.id}-${i + 1}`, s.explanation] as [string, string | undefined])),
+    );
+    for (const [itemId, text] of Object.entries(explanations)) {
+      expect(text.length).toBeGreaterThan(0);
+      expect(shown.get(itemId)).toBe(text);
+    }
+  });
+
+  it("解説がない肢は explanation を持たない", async () => {
+    const empty = new QuestionQueryService(undefined, {});
+    const catalog = await empty.getPracticeCatalog();
+    expect(catalog.questions.flatMap((q) => q.statements!).some((s) => s.explanation !== undefined)).toBe(false);
   });
 
   it("問題詳細は前後の問題・原本PDFのページ・肢IDを返し、ない問題は null", async () => {

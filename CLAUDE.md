@@ -43,6 +43,7 @@ src/
 │   └── controllers/         入口の窓口。検証 → 実行 → 翻訳のみ
 ├── infrastructure/          interface の実装と結線
 │   ├── data/kakomon/        問題データ（scripts/kakomon/build.py が生成。直接編集しない）
+│   ├── data/explanations/   解説データ（肢ID → 解説文）
 │   ├── database/            ブラウザの保存先（learning-record-storage.ts。localStorage の読み書きと変更通知）
 │   ├── repositories/        リポジトリの実装（例: learning-record.repository.ts）
 │   │   └── mappers/         保存形式 ↔ Entity ↔ 画面用DTO の詰め替え
@@ -112,6 +113,8 @@ src/
 
 - 生成: `scripts/kakomon/fetch.py` → `build.py`。照合: `verify.py`（原本PDFを別経路で読み直して突き合わせる）。
 - 手作業の補正は `scripts/kakomon/overrides.json` に置き、生成物（`src/infrastructure/data/kakomon/`）は直接編集しない。
+- 解説は `src/infrastructure/data/explanations/`（肢ID → 解説文）に問題データとは別に置く。AIが作成したもので、画面に「AI生成」と表示する。
+- 解説を追加・修正したら `scripts/kakomon/verify_explanations.py` で肢IDと条文番号の実在を確認し、`--show` で引用先の本文と内容が合うことも確認する（番号が実在しても内容が違う誤りは機械では見つからない）。根拠を確認できなかった肢は `scripts/kakomon/explanations_uncertain.md` に記録し、確認できたら該当行を削除する。
 
 ## ビルド・確認
 

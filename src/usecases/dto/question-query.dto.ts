@@ -7,6 +7,7 @@ export type StatementView = {
   text: string;
   context?: string;
   truth?: boolean;
+  explanation?: string;
 };
 
 export type QuestionView = {

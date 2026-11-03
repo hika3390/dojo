@@ -36,6 +36,19 @@ python3 -m venv .venv
 - 正解PDFが画像のみの年度（令和2年度）や、出題ミスにより全員正解となった問題（令和7年度午後第33問）は `scripts/kakomon/overrides.json` で補正しています。
 - 空欄補充・計算問題など、1肢ずつの○×に変換できない形式は対象外として出力し、問題一覧では「対象外」と表示します。
 
+### 解説
+
+法務省は解説を公表していないため、`src/infrastructure/data/explanations/*.json`（肢ID → 解説文）はAIが作成したものです。専門家の監修は受けていません。
+
+```bash
+python3 scripts/kakomon/verify_explanations.py         # 肢IDと、引用した条・項・号の実在を e-Gov 法令データで確認
+python3 scripts/kakomon/verify_explanations.py --show  # 引用先の条文本文を表示（内容が合うかは人が確認）
+```
+
+- 条文は各年度の4月1日時点のものと照合します。令和8年度は問題冊子の記載に基づく基準日で、令和7年度以前は同じ日付と仮定しています。
+- 照合の対象は法令の条・項・号です。判例・先例の内容、法令の別表、e-Gov に掲載のない民事訴訟規則などは照合できません。
+- 根拠を確認できなかった肢は [scripts/kakomon/explanations_uncertain.md](scripts/kakomon/explanations_uncertain.md) に記録しています。
+
 ### 収録範囲
 
 | 年度 | 状態 |

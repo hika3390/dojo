@@ -256,6 +256,23 @@ export function PlayIcon(props: IconProps) {
   );
 }
 
+export function MenuIcon({ open = false, ...props }: IconProps & { open?: boolean }) {
+  return (
+    <Svg {...props}>
+      <path d={open ? "M6 6l12 12M18 6L6 18" : "M4 6.5h16M4 12h16M4 17.5h16"} />
+    </Svg>
+  );
+}
+
+export function SparkleIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M10.5 4.5c.7 4.9 3.1 7.3 8 8-4.9.7-7.3 3.1-8 8-.7-4.9-3.1-7.3-8-8 4.9-.7 7.3-3.1 8-8Z" fill="currentColor" stroke="none" />
+      <path d="M18.5 2.5c.25 1.8 1.2 2.75 3 3-1.8.25-2.75 1.2-3 3-.25-1.8-1.2-2.75-3-3 1.8-.25 2.75-1.2 3-3Z" fill="currentColor" stroke="none" />
+    </Svg>
+  );
+}
+
 export function InboxIcon(props: IconProps) {
   return (
     <Svg {...props}>

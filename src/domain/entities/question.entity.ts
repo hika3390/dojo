@@ -7,6 +7,7 @@ export type Statement = {
   text: string;
   context?: string;
   truth?: boolean;
+  explanation?: string;
 };
 
 export type Question = {

@@ -1,3 +1,4 @@
+import defaultExplanations from "@/infrastructure/data/explanations";
 import years from "@/infrastructure/data/kakomon";
 import { SUBJECTS } from "@/domain/constants/subjects";
 import type { ExamYear } from "@/domain/entities/exam-year.entity";
@@ -17,6 +18,18 @@ import type { IQuestionQueryService } from "@/usecases/queries/question.query-se
 
 export type ExamFileRow = ExamYear & { questions: Question[] };
 
+function withExplanations(question: Question, explanations: Record<string, string>): Question {
+  if (!isPracticable(question)) return question;
+  const id = QuestionId.create(question.id);
+  return {
+    ...question,
+    statements: question.statements!.map((statement, index) => {
+      const explanation = explanations[ItemId.of(id, index).value];
+      return explanation ? { ...statement, explanation } : statement;
+    }),
+  };
+}
+
 function toRef(q: Question | undefined): QuestionRef | null {
   return q ? { id: q.id, year: q.year, session: q.session, number: q.number } : null;
 }
@@ -26,9 +39,9 @@ export class QuestionQueryService implements IQuestionQueryService {
   private readonly questions: Question[];
   private readonly indexById: Map<string, number>;
 
-  constructor(files: ExamFileRow[] = years as unknown as ExamFileRow[]) {
+  constructor(files: ExamFileRow[] = years as unknown as ExamFileRow[], explanations: Record<string, string> = defaultExplanations) {
     this.exams = files.map(({ year, label, source }) => ({ year, label, source }));
-    this.questions = files.flatMap((file) => file.questions);
+    this.questions = files.flatMap((file) => file.questions).map((question) => withExplanations(question, explanations));
     this.indexById = new Map(this.questions.map((q, i) => [q.id, i]));
   }
 

@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto flex h-[68px] max-w-5xl items-center justify-between gap-3 px-4 sm:h-[76px]">
             <Link href="/" className="flex items-center gap-3 text-lg font-bold tracking-tight sm:text-xl">
               <LogoMark size={36} />
-              <span className="hidden min-[420px]:inline">司法書士道場</span>
+              司法書士道場
             </Link>
             <SiteNav />
           </div>
